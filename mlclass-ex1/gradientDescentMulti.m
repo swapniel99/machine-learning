@@ -1,4 +1,4 @@
-function [theta, J_history] = gradientDescentMulti(X, y, theta, alpha, num_iters)
+function [theta, J_history] = gradientDescentMulti(X, y, theta, alpha)
 %GRADIENTDESCENTMULTI Performs gradient descent to learn theta
 %   theta = GRADIENTDESCENTMULTI(x, y, theta, alpha, num_iters) updates theta by
 %   taking num_iters gradient steps with learning rate alpha
@@ -6,9 +6,11 @@ function [theta, J_history] = gradientDescentMulti(X, y, theta, alpha, num_iters
 % Initialize some useful values
 m = length(y); % number of training examples
 n = length(theta);
-J_history = zeros(num_iters, 1);
+J_history = [];
+iter=1;
+cost1=computeCostMulti(X,y,theta);
 
-for iter = 1:num_iters
+while true,
 
     % ====================== YOUR CODE HERE ======================
     % Instructions: Perform a single gradient step on the parameter vector
@@ -18,12 +20,20 @@ for iter = 1:num_iters
     %       of the cost function (computeCostMulti) and gradient here.
     %
 
+    J_history=[J_history;cost1];
     theta=theta-alpha*sum(repmat(X*theta-y,1,n).*X)'/m;
+    cost2=computeCostMulti(X,y,theta);
+    if abs(cost2-cost1)<0.000001,
+	printf('Convergence at iteration %d\n',iter);
+	break;
+    end;
+    iter=iter+1;
+    cost1=cost2;
 
     % ============================================================
 
     % Save the cost J in every iteration    
-    J_history(iter) = computeCostMulti(X, y, theta);
+%    J_history(iter) = computeCostMulti(X, y, theta);
 
 end
 
