@@ -18,7 +18,6 @@ for iter = 1:num_iters
     %
     
     J_history(iter,:)=[theta',computeCost(X,y,theta)];
-    delta=zeros(2,1);
     t0=theta(1)-alpha*sum(X*theta-y)/m;
     t1=theta(2)-alpha*sum((X*theta-y).*X(:,2))/m;
     theta=[t0;t1];
