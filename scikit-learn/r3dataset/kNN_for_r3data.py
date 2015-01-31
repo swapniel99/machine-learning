@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 X=[]
 y=[]
 
+print 'Fetching data...'
 with open('trainr3.csv','rb') as f:
     read = csv.reader(f, delimiter = ',', quoting = csv.QUOTE_NONNUMERIC)
     for row in read:
@@ -41,33 +42,29 @@ with open('testr31.csv','rb') as f1:
         X1.append(row[:-1])
         y1.append(int(row[-1]))
 
-#Generate first plot: K vs. Accuracy for first test file.
-ks=[]
+#Generate plot data
+print 'Generating plots...'
+ks=range(1,21)
 acc0=[]
-for k in range(1,21):
-    ks.append(k)
-    knn=KNeighborsClassifier(n_neighbors=k)
-    knn.fit(X, y)
-    total=len(X0)
-    correctlyclassified=0
-    for i in range(total):
-        if knn.predict(X0[i])[0]==y0[i]:
-            correctlyclassified+=1
-    acc0.append(correctlyclassified/float(total))
-
-#Generate second plot: K vs. Accuracy for second test file.
 acc1=[]
-for k in range(1,21):
+for k in ks:
     knn=KNeighborsClassifier(n_neighbors=k)
     knn.fit(X, y)
-    total=len(X1)
-    correctlyclassified=0
-    for i in range(total):
+    total0=len(X0)
+    correctlyclassified0=0
+    for i in range(total0):
+        if knn.predict(X0[i])[0]==y0[i]:
+            correctlyclassified0+=1
+    acc0.append(correctlyclassified0/float(total0))
+    total1=len(X1)
+    correctlyclassified1=0
+    for i in range(total1):
         if knn.predict(X1[i])[0]==y1[i]:
-            correctlyclassified+=1
-    acc1.append(correctlyclassified/float(total))
+            correctlyclassified1+=1
+    acc1.append(correctlyclassified1/float(total1))
 
-#Save the two plots
+#Saving the two plots
+print 'Saving plots testr30.png and testr31.png...'
 p1=plt.figure()
 plt.title('K vs. Accuracy for testr30.csv')
 plt.xlabel('K')
@@ -83,3 +80,5 @@ plt.ylabel('Accuracy')
 plt.plot(ks,acc1,'b-')
 plt.grid(True)
 plt.savefig('testr31.png')
+
+print 'Done.'
