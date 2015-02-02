@@ -1,0 +1,2 @@
+In the graphs of both cross-validation techniques, we see that the accuracy remains more or less same for all k from 1 to 10.
+
