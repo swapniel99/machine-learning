@@ -1,2 +1,5 @@
 In the graphs of both cross-validation techniques, we see that the accuracy remains more or less same for all k from 1 to 10.
 
+We observe that the accuracy is maximum when k=1, which tells us something about the dataset: Points in same class tend to be close to each other.
+
+Generally k is increased to reduce the effect of noise in tha dataset. But k has to be still significantly smaller than m, else accuracy takes a hit. This is evident from the graph since as k increases, accuracy seems to decrease slowly. Had this graph been in logarithmic scale, it would have been more evident.

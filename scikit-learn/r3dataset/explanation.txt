@@ -1,0 +1,8 @@
+Both the test data files basically contain the same points (Well most of them are same). Only difference is that they are labelled differently in both. So the two plots were bound to be mirror images along the horizontal axis. So the following explanation is applicable to both the plots(Keeping in mind the mirror of course).
+
+The training data has two clusters: 5 points in one group(labelled 0). And the rest in another spread over a plane(labelled 1).
+
+And the test data is all around the smaller cluster. So till k=10, majority of points in test will predict the smaller cluster(predicted 0). When k=10, there is a tie and it still predicts 0.
+
+When k>=11, majority is from the larger cluster, and starts classifying the test points as 1.
+
