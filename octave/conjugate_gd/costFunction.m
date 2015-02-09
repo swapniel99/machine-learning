@@ -7,6 +7,6 @@ persistent X = [ones(m,1),temp(:,2:end)];
 persistent n = length(theta);
 
 jVal = sum((X*theta-y).^2)/(2*m);  % Cost function
-gradient = sum(repmat(X*theta-y,1,n).*X)'/m; % Partial derivatives
+gradient = sum(repmat(X*theta-y,1,n).*X)'./m; % Partial derivatives
 
 end
