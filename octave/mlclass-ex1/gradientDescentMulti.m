@@ -5,7 +5,6 @@ function [theta, J_history] = gradientDescentMulti(X, y, theta, alpha)
 
 % Initialize some useful values
 m = length(y); % number of training examples
-n = length(theta);
 J_history = [];
 iter=1;
 cost1=computeCostMulti(X,y,theta);
@@ -21,7 +20,7 @@ while true,
     %
 
     J_history=[J_history;cost1];
-    theta=theta-alpha*sum(repmat(X*theta-y,1,n).*X)'/m;
+    theta=theta-alpha*(X'*(X*theta - y))/m;
     cost2=computeCostMulti(X,y,theta);
     if abs(cost2-cost1)<0.000001,
 	printf('Convergence at iteration %d\n',iter);
