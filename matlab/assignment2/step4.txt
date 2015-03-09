@@ -1,4 +1,0 @@
-When we run hyp_dance(30), first 30 plots were made using maximum margin with hinge loss.
-In each of the iteration seperable data was sampled and we saw the yellow plane was almost stable.
-The next 30 iterations were used perceptron, which does not try to maximize margin. So it may settle for 
-any hyperplane separating the datasets. Hence the cyan hyperplane seems to wobble with every iteration.

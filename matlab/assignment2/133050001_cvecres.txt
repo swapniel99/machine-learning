@@ -1,2 +1,0 @@
-Hinge loss max margin: Best Accuracy = 0.45700 for C = 32
-Hinge square loss max margin: Best Accuracy = 0.64150 for C = 2

@@ -1,0 +1,4 @@
+The time taken in both cases was roughly the same, since in first case all the
+points were support vectors and in the second case majority of points were
+support vectors. Correspondingly that many alphas will be non zero. So cvx 
+will be equally slow for both.
